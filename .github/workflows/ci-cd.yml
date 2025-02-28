@@ -30,7 +30,7 @@ jobs:
 
     - name: Build Docker Image
       run: |
-        docker build -t php-docker-app .
+        sudo docker build -t php-docker-app .
 
     - name: Log in to Docker Hub
       uses: docker/login-action@v2
@@ -40,8 +40,8 @@ jobs:
 
     - name: Push Docker Image to Docker Hub
       run: |
-        docker tag php-docker-app ${{ secrets.DOCKER_USERNAME }}/php-docker-app:${{ github.sha }}
-        docker push ${{ secrets.DOCKER_USERNAME }}/php-docker-app:${{ github.sha }}
+        sudo docker tag php-docker-app ${{ secrets.DOCKER_USERNAME }}/php-docker-app:${{ github.sha }}
+        sudo docker push ${{ secrets.DOCKER_USERNAME }}/php-docker-app:${{ github.sha }}
 
   # Step 2: Deploy to Google Cloud VM
   deploy:
@@ -66,6 +66,6 @@ jobs:
         script: |
           cd ~/phpdockerize
           git pull origin main
-          docker build -t php-docker-app .
-          docker stop $(docker ps -q --filter "ancestor=php-docker-app")
-          docker run -d -p 8080:80 php-docker-app
+          sudo docker build -t php-docker-app .
+          sudo docker stop $(docker ps -q --filter "ancestor=php-docker-app")
+          sudo docker run -d -p 8080:80 php-docker-app
