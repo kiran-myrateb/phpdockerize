@@ -67,5 +67,5 @@ jobs:
           cd ~/phpdockerize
           git pull origin main
           sudo docker build -t php-docker-app .
-          sudo docker stop $(sudo docker ps -q --filter "ancestor=php-docker-app")
+          sudo docker stop $(sudo docker ps -q)
           sudo docker run -d -p 8080:80 php-docker-app
