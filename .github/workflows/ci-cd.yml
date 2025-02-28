@@ -40,8 +40,8 @@ jobs:
 
     - name: Push Docker Image to Docker Hub
       run: |
-        sudo docker tag php-docker-app ${{ secrets.DOCKER_USERNAME }}/php-docker-app:${{ github.sha }}
-        sudo docker push ${{ secrets.DOCKER_USERNAME }}/php-docker-app:${{ github.sha }}
+        docker tag php-docker-app ${{ secrets.DOCKER_USERNAME }}/php-docker-app:${{ github.sha }}
+        docker push ${{ secrets.DOCKER_USERNAME }}/php-docker-app:${{ github.sha }}
 
   # Step 2: Deploy to Google Cloud VM
   deploy:
