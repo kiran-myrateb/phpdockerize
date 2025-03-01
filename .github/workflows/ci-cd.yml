@@ -7,6 +7,8 @@ on:
   pull_request:
     branches:
       - main
+    types:
+      - merged  # Ensure this only runs when a PR is merged into main
 
 jobs:
   # Step 1: Build Docker Image and Push to Docker Hub
