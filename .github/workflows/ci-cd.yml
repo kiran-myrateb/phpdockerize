@@ -41,7 +41,9 @@ jobs:
     - name: Push Docker Image to Docker Hub
       run: |
         docker tag php-docker-app ${{ secrets.DOCKER_USERNAME }}/php-docker-app:${{ github.sha }}
+        docker tag php-docker-app ${{ secrets.DOCKER_USERNAME }}/php-docker-app:latest
         docker push ${{ secrets.DOCKER_USERNAME }}/php-docker-app:${{ github.sha }}
+        docker push ${{ secrets.DOCKER_USERNAME }}/php-docker-app:latest
 
   # Step 2: Deploy to Google Cloud VM
   deploy:
@@ -66,6 +68,6 @@ jobs:
         script: |
           cd ~/phpdockerize
           git pull origin main
-          sudo docker build -t php-docker-app .
+          sudo docker pull ${{ secrets.DOCKER_USERNAME }}/php-docker-app:${{ github.sha }}
           sudo docker stop $(sudo docker ps -q)
-          sudo docker run -d -p 8080:80 php-docker-app
+          sudo docker run -d -p 8080:80 ${{ secrets.DOCKER_USERNAME }}/php-docker-app:${{ github.sha }}
