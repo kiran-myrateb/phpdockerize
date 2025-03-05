@@ -1,5 +1,4 @@
 name: CI/CD Pipeline for PHP Docker App
-
 on:
   push:
     branches:
