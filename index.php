@@ -182,7 +182,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2025 Business Name. All Rights Reserved.</p>
+        <p>&copy; 2024 Business Name. All Rights Reserved.</p>
         <p><a href="https://www.vinzglobal.com" style="color: white; text-decoration: none;">Visit our website</a></p>
     </footer>
 
