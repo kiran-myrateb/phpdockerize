@@ -47,7 +47,7 @@ jobs:
         docker push ${{ secrets.DOCKER_USERNAME }}/php-docker-app:latest
 
   # Step 2: Deploy to Google Cloud VM
-    deploy:
+  deploy:
     runs-on: ubuntu-latest
     needs: build
     if: github.event_name == 'release'  # Only deploy when a release is created
